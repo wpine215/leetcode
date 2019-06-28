@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+.vscode/ipch/36a928443f2cc869/mmap_address.bin
+.vscode/ipch/36a928443f2cc869/TWO-SUM.ipch
+.vscode/settings.json
