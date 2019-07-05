@@ -5,15 +5,17 @@ using namespace std;
 class Solution {
 public:
 	int maxSubArray(vector<int>& nums) {
-		int max = 0;
+		// O(n) time, one pass approach (no divide and conquer)
+		int max = nums[0];
 		int rsum = 0;
 		for (int i = 0; i < nums.size(); i++) {
-			if (nums[i] + rsum > 0)
+			if (nums[i] + rsum > 0) {
 				rsum += nums[i];
-			else
+				if (rsum > max) max = rsum;
+			} else {
 				rsum = 0;
-			if (rsum > max)
-				max = rsum;
+				if (nums[i] > max) max = nums[i];
+			}
 		}
 		return max;		
 	}
@@ -21,11 +23,12 @@ public:
 
 // TESTING
 int main() {
-	// Expected output: 6
+	// Expected output: 6, 6
 	Solution s;
 	vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+	vector<int> nums2 = {-3, -2, 1, 2, 2, 0, 1, 0};
 	
 	int output = s.maxSubArray(nums);
-	cout << "Output: " << output << endl;
+	cout << s.maxSubArray(nums) << "," << s.maxSubArray(nums2) << endl;
 	return 0;
 }
